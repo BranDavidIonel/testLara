@@ -12,13 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     //return view('welcome');
     $name=request('name');
     return view('test',['name'=>$name]);
 });
-/*
+
 Route::get('/posts/{post}', function ($post) {
     //return view('test');
     
@@ -35,6 +35,7 @@ Route::get('/posts/{post}', function ($post) {
     
 });
 */
-Route::get('/posts/{post}','PostsController@show');
+//Route::get('/posts/{post}','PostsController@show');
+Route::get('/', 'ArticleController@index')->name('article.index');
 
 
