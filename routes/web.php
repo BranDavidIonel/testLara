@@ -38,4 +38,11 @@ Route::get('/posts/{post}', function ($post) {
 //Route::get('/posts/{post}','PostsController@show');
 Route::get('/', 'ArticleController@index')->name('article.index');
 
+Route::post('article/articles', 'ArticleController@store')->name('article.store');
+
+Route::get('/article/create', 'ArticleController@create')->name('article.create');;
+
+
+//Route::get('/article/{article}', 'ArticleController@show');
+
 

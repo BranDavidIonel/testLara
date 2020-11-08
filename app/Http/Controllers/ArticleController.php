@@ -15,7 +15,8 @@ class ArticleController extends Controller
     public function index()
     {
         $article=Article::latest()->get();
-        return view('article.index',['article'=>$article]);
+        
+        return view('article.index',['articles'=>$article]);
     }
 
     /**
@@ -25,7 +26,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('article.create');
+        
     }
 
     /**
@@ -34,9 +36,19 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+      //dump(request()->all());
+      
+      $article=new Article();
+      $article->title=request('title');
+      $article->excerpt=request('excerpt');
+      $article->body=request('body');
+      $article->save();
+      return redirect('/');
+      
+    
+
     }
 
     /**
@@ -45,9 +57,12 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show($id)
     {
-        //
+      $article=Article::find($id);
+     return view('article.show',['article'=>$article]);
+     
+
     }
 
     /**
