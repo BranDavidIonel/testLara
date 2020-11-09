@@ -39,7 +39,24 @@ class ArticleController extends Controller
     public function store()
     {
       //dump(request()->all());
-      
+      $validatedAttributes=request()->validate([
+        //'title'=>['request','min:2','max:255 '],
+        'title'=>'required',
+        'excerpt'=>'required',
+        'body'=>'required'
+        
+        ]);
+        //return $validatedAttributes;
+        Article::create($validatedAttributes);
+        /*
+        Article::create([
+        'title'=>request('title'),
+        'excerpt'=>request('ecerpt'),
+        'body'=>request('body')
+        ])
+        */
+
+
       $article=new Article();
       $article->title=request('title');
       $article->excerpt=request('excerpt');

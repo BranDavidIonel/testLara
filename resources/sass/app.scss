@@ -1,5 +1,8 @@
 $primary:rgb(0, 89, 255);
-
+$red:red;
 body{
     color:$primary;
 }
+.background-danger{
+    background-color:$red;  
+  }

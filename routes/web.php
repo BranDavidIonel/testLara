@@ -40,9 +40,8 @@ Route::get('/', 'ArticleController@index')->name('article.index');
 
 Route::post('article/articles', 'ArticleController@store')->name('article.store');
 
-Route::get('/article/create', 'ArticleController@create')->name('article.create');;
+Route::get('/article/create', 'ArticleController@create')->name('article.create');
 
-
-//Route::get('/article/{article}', 'ArticleController@show');
+Route::get('/article/show/{article}', 'ArticleController@show')->name('article.show');
 
 
