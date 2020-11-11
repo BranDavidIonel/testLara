@@ -38,7 +38,7 @@ class ArticleController extends Controller
      */
     public function store()
     {
-      //dump(request()->all());
+    //dump(request()->all());
       $validatedAttributes=request()->validate([
         //'title'=>['request','min:2','max:255 '],
         'title'=>'required',
@@ -47,7 +47,7 @@ class ArticleController extends Controller
         
         ]);
         //return $validatedAttributes;
-        Article::create($validatedAttributes);
+        //Article::create($validatedAttributes);
         /*
         Article::create([
         'title'=>request('title'),
@@ -58,6 +58,7 @@ class ArticleController extends Controller
 
 
       $article=new Article();
+      $article->user_id=1;
       $article->title=request('title');
       $article->excerpt=request('excerpt');
       $article->body=request('body');
