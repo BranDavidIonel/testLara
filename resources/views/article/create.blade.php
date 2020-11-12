@@ -28,7 +28,16 @@
     @if ($errors->has('body'))
     <p class=" background-danger bg-danger" >{{$errors->first('body')}} </p>
     @endif
-    
+    <select
+    name="tags[]" multiple required>
+	@foreach($tags as $tag)
+		<option value="{{ $tag->id}}">{{$tag->name}} </option>
+	@endforeach
+    </select>
+    <div>
+    @error('tags')
+        <p> {{$message}} </p>
+    @enderror
     <button type="submit" class="btn btn-primary">Submit </button>
 
 

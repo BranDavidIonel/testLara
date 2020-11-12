@@ -6,7 +6,7 @@
 <h2> {{$article->excerpt}} </h2>
 <h2> {{$article->body}} </h2>
 </div>
-<p> da
+<p> 
 	@foreach ($article->Tags as $tag)
 		<a href="{{route('article.index',['tag'=>$tag->name])}}"> {{ $tag->name}} </a>
 	@endforeach

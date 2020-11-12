@@ -15,15 +15,15 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $article=Article::get()->all();
-        var_dump($article);
+        //$article=Article::get()->all();
+        //var_dump($article);
         if(request('tag')){
-            //$article=Tag::where('name',request('tag'))->firstOrFail()->article;
+            $article=Tag::where('name',request('tag'))->firstOrFail()->articles;
         }else{
-           //$article=Article::latest()->get();
+            $article=Article::latest()->get();
 
         }
-        dd($article->tags);
+        //dd($article);
         //exit();
         return view('article.index',['article'=>$article]);
     }
@@ -35,7 +35,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('article.create');
+        $tag=Tag::get()->all();
+        return view('article.create',['tags'=>$tag]);
         
     }
 
@@ -58,6 +59,8 @@ class ArticleController extends Controller
         //return $validatedAttributes;
         //Article::create($validatedAttributes);
         /*
+        ,
+        'tags'=>'exists::tags,id'
         Article::create([
         'title'=>request('title'),
         'excerpt'=>request('ecerpt'),
@@ -71,7 +74,14 @@ class ArticleController extends Controller
       $article->title=request('title');
       $article->excerpt=request('excerpt');
       $article->body=request('body');
+
       $article->save();
+      $article->tags()->attach(request('tags'));
+
+      //var_dump(  $article->tags()->attach(request('tags')));
+
+      
+      
       return redirect('/');
       
     

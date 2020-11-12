@@ -11,7 +11,7 @@
 <th>Delete</th>
 <th>Show</th>
 </tr>
-@foreach($article as $line)
+@forelse($article as $line)
 <tr>
 <td>{{ $line->title }}</td>
 <td>{{ $line->excerpt }}</td>
@@ -23,10 +23,10 @@
  <a class ="btn btn-danger" href="{{URL::to('article/delete/'.$line->id)}}" onclick="return confirm ('Are you sure?')">Delete </a>
 </td>
 <td><a class="btn btn-primary"  href="{{URL:: to('article/show/'.$line->id)}}"> Show </a></td>
-
-@endforeach
+@empty 
+ <p> No relevant articles </p>
+@endforelse
 </table> 
-
 
 @endsection
 
