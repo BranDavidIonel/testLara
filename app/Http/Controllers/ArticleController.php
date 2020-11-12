@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Tag;
 use Illuminate\Http\Request;
 USE DB;
 class ArticleController extends Controller
@@ -14,9 +15,17 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $article=Article::latest()->get();
-        
-        return view('article.index',['articles'=>$article]);
+        $article=Article::get()->all();
+        var_dump($article);
+        if(request('tag')){
+            //$article=Tag::where('name',request('tag'))->firstOrFail()->article;
+        }else{
+           //$article=Article::latest()->get();
+
+        }
+        dd($article->tags);
+        //exit();
+        return view('article.index',['article'=>$article]);
     }
 
     /**
@@ -78,17 +87,15 @@ class ArticleController extends Controller
     public function show($id)
     {
       $article=Article::find($id);
+     // dd($article->Tags);
+      //exit();
+      //$tags=$article->Tags
      return view('article.show',['article'=>$article]);
      
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Article  $article
-     * @return \Illuminate\Http\Response
-     */
+  
     public function edit($id)
     {
         $article=DB::table('articles')->where('id',$id)->first();

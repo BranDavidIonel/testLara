@@ -40,10 +40,8 @@ class User extends Authenticatable
         return $this->hasMany(Article::class);//select * FROM articles whee user_id=1
 
     }
-    public function projects(){
-        return $this->hasMany(Project::class);
-
-    }
+   
     //ex $user=User:: find(1) ; select * from user id=1
     //$user->projects; //select * FROM  projects whee user_id=$user->id
+    //$user->projects->first()| last()| find()|split(3)|groupBy();
 }
