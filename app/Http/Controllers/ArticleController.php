@@ -6,14 +6,12 @@ use App\Article;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactMe;
 USE DB;
 class ArticleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    private $topic_message="topic Klaus Iohanis";
+
     public function index()
     {
         //$article=Article::get()->all();
@@ -99,10 +97,14 @@ class ArticleController extends Controller
    
         $validatedAttributes=request()->validate(['email'=>'required|email']);
         //$email=request('email');
+        /*
         Mail::raw('merge', function($message){
             $message->to(request('email'))
                     ->subject('Hello there!');
         });
+        */
+        MAIL::to(request('email'))
+              ->send(new ContactMe($this->topic_message));
         return redirect()->route('article.sendEmail')->with('message','Email sent !');
 
     }
