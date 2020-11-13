@@ -7,6 +7,7 @@ use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactMe;
+use App\Mail\Contact;
 USE DB;
 class ArticleController extends Controller
 {
@@ -104,7 +105,7 @@ class ArticleController extends Controller
         });
         */
         MAIL::to(request('email'))
-              ->send(new ContactMe($this->topic_message));
+              ->send(new Contact($this->topic_message));
         return redirect()->route('article.sendEmail')->with('message','Email sent !');
 
     }
