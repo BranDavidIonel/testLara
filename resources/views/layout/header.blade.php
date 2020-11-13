@@ -25,6 +25,9 @@
         <a class="nav-link" href="{{ route('article.create')}}">Add</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="{{ route('article.sendEmail')}}">Send Email</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>

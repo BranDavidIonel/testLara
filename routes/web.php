@@ -39,8 +39,10 @@ Route::get('/posts/{post}', function ($post) {
 Route::get('/', 'ArticleController@index')->name('article.index');
 
 Route::post('article/articles', 'ArticleController@store')->name('article.store');
+Route::post('article/storeSendEmail', 'ArticleController@storeSendEmail')->name('article.storeSendEmail');
 
 Route::get('/article/create', 'ArticleController@create')->name('article.create');
+Route::get('/article/sendEmail', 'ArticleController@createSendEmail')->name('article.sendEmail');
 
 Route::get('/article/show/{article}', 'ArticleController@show')->name('article.show');
 Route::get('/article/edit/{article}', 'ArticleController@edit')->name('article.edit');

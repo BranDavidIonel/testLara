@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Article;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 USE DB;
 class ArticleController extends Controller
 {
@@ -37,6 +38,12 @@ class ArticleController extends Controller
     {
         $tag=Tag::get()->all();
         return view('article.create',['tags'=>$tag]);
+        
+    }
+    public function createSendEmail()
+    {
+        
+        return view('article.mail');
         
     }
 
@@ -87,7 +94,18 @@ class ArticleController extends Controller
     
 
     }
+    public function storeSendEmail(Request $request){
 
+   
+        $validatedAttributes=request()->validate(['email'=>'required|email']);
+        //$email=request('email');
+        Mail::raw('merge', function($message){
+            $message->to(request('email'))
+                    ->subject('Hello there!');
+        });
+        return redirect()->route('article.sendEmail')->with('message','Email sent !');
+
+    }
     /**
      * Display the specified resource.
      *
