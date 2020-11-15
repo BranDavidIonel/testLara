@@ -129,8 +129,12 @@ class ArticleController extends Controller
   
     public function edit($id)
     {
-        $article=DB::table('articles')->where('id',$id)->first();
-        return view('article.edit',compact('article'));
+        $tags_new=Tag::get()->all();
+        //$article=DB::table('articles')->where('id',$id)->first();
+        $article=Article::find($id);
+      
+        
+        return view('article.edit',compact('article','tags_new'));
 
     }
 
@@ -142,6 +146,7 @@ class ArticleController extends Controller
     $data['title']=$request->title;
     $data['excerpt']=$request->excerpt;
     $data['body']=$request->body;
+    $data['user_id']=1;
  
     //for a single image
     /*
@@ -164,8 +169,13 @@ class ArticleController extends Controller
     
     */
   
-    $project=DB::table('articles')->where('id',$id)->update($data);
-        return redirect()->route('article.index')
+   // $project=DB::table('articles')->where('id',$id)->update($data);
+   $project=Article::create($data);
+
+    //$project->tags()->sync($request->tags);
+    $project->tags()->attach($request->tags);
+
+     return redirect()->route('article.index')
                         ->with('success','Article updated successfully!');
 
 
