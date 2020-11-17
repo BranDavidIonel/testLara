@@ -36,8 +36,11 @@ Route::get('/posts/{post}', function ($post) {
 });
 */
 //Route::get('/posts/{post}','PostsController@show');
-Route::get('/', 'ArticleController@index')->name('article.index');
-
+//Route::get('/', 'ArticleController@index')->name('article.index');
+Route::get('/', function () {
+    $name=request('name');
+    return view('welcome',['name'=>$name]);
+});
 Route::post('article/articles', 'ArticleController@store')->name('article.store');
 Route::post('article/storeSendEmail', 'ArticleController@storeSendEmail')->name('article.storeSendEmail');
 
@@ -50,3 +53,7 @@ Route::get('/article/delete/{article}', 'ArticleController@delete')->name('artic
 Route::post('/article/update/{article}', 'ArticleController@update')->name('article.update');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');

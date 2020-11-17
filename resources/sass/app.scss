@@ -1,8 +1,8 @@
-$primary:rgb(0, 89, 255);
-$red:red;
-body{
-    color:$primary;
-}
-.background-danger{
-    background-color:$red;  
-  }
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
