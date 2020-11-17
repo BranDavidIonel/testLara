@@ -57,3 +57,6 @@ Route::post('/article/update/{article}', 'ArticleController@update')->name('arti
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('conversations', 'ConversationsController@index');
+Route::get('conversations/{conversation}', 'ConversationsController@show')->name('conversation.show');
+Route::post('conversations/best-reply/{reply}','ConversationBestReplyController@store')->name('best-reply.update');

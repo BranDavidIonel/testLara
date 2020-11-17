@@ -40,6 +40,13 @@ class User extends Authenticatable
         return $this->hasMany(Article::class);//select * FROM articles whee user_id=1
 
     }
+    public function conversations() {
+        return $this->hasMany(Conversation::class);
+    }
+
+    public function replies() {
+        return $this->hasMany(Reply::class);
+    }
    
     //ex $user=User:: find(1) ; select * from user id=1
     //$user->projects; //select * FROM  projects whee user_id=$user->id
