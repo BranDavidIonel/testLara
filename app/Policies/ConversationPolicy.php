@@ -51,6 +51,15 @@ class ConversationPolicy
      * @param  \App\Conversation  $conversation
      * @return mixed
      */
+    /*
+    public function before(User $user){
+        //admin id
+        if($user->id===6){
+            return true;
+
+        }
+    }
+    */
     public function update(User $user, Conversation $conversation)
     {
         return $conversation->user->is($user);

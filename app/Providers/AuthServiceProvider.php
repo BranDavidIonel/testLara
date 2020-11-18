@@ -32,6 +32,12 @@ class AuthServiceProvider extends ServiceProvider
             //return true;
         });
         */
+        Gate::before(function(User $user , Conversation $conversation){
+        if($user->id===6){
+            return true;
+        }
+
+        });
         
     }
 }
