@@ -26,13 +26,13 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-        /*
+        
         Gate::define('update-conversation',function(User $user , Conversation $conversation){
             return $conversation->user->is($user);
             //return true;
         });
-        */
-        Gate::before(function(User $user , Conversation $conversation){
+        
+        Gate::before(function(User $user ){
         if($user->id===6){
             return true;
         }

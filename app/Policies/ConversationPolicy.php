@@ -28,10 +28,12 @@ class ConversationPolicy
      * @param  \App\Conversation  $conversation
      * @return mixed
      */
+    /*
     public function view(User $user, Conversation $conversation)
     {
-        //
+        return $conversation->user->is($user);
     }
+    */
 
     /**
      * Determine whether the user can create models.

@@ -58,6 +58,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('conversations', 'ConversationsController@index')->name('conversations.index');
-Route::get('conversations/{conversation}', 'ConversationsController@show')->name('conversation.show');
+Route::get('conversations/{conversation}', 'ConversationsController@show')->name('conversation.show')->middleware('can:view,conversation');;
 
 Route::post('conversations/best-reply/{reply}','ConversationBestReplyController@store')->name('best-reply.update');
