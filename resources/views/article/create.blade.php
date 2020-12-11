@@ -4,7 +4,7 @@
 <div class="container">
 <div id="wrapper">
 <div class="pull-right">
-<a class="btn btn-success" href="{{url('/')}}" >  Back </a>
+<a class="btn btn-success" href="{{url('/articles')}}" >  Back </a>
 </div>
 <div class="wrapper">
     <h1>New Article </h1>

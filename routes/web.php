@@ -41,6 +41,7 @@ Route::get('/', function () {
     $name=request('name');
     return view('welcome',['name'=>$name]);
 });
+Route::get('/articles', 'ArticleController@index')->name('article.index');
 Route::post('article/articles', 'ArticleController@store')->name('article.store');
 Route::post('article/storeSendEmail', 'ArticleController@storeSendEmail')->name('article.storeSendEmail');
 
@@ -51,6 +52,8 @@ Route::get('/article/show/{article}', 'ArticleController@show')->name('article.s
 Route::get('/article/edit/{article}', 'ArticleController@edit')->name('article.edit');
 Route::get('/article/delete/{article}', 'ArticleController@delete')->name('article.delete');
 Route::post('/article/update/{article}', 'ArticleController@update')->name('article.update');
+
+Route::get('/article/notifications/{article}','ArticleNotificationController@show');
 
 
 

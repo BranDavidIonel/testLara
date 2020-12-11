@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Tag;
+use App\Notifications\PaymentReceived;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
 use App\Mail\ContactMe;
 use App\Mail\Contact;
+use App\User;
 USE DB;
 class ArticleController extends Controller
 {
@@ -86,8 +89,9 @@ class ArticleController extends Controller
 
       //var_dump(  $article->tags()->attach(request('tags')));
 
-      
-      
+     // dd(request()->user());
+     $article->notify(new PaymentReceived($article->excerpt));
+      //request()->user()->notify(new PaymentReceived());
       return redirect('/');
       
     
